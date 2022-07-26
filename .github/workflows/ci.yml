@@ -32,4 +32,3 @@ jobs:
         id: echo-docker-meta
         run: |
           echo ${{ steps.pkgversion.outputs.PKG_VERSION }}
-          echo ${{ steps.meta.outputs.tags }}
