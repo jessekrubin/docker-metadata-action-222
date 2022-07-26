@@ -12,7 +12,8 @@ jobs:
       - name: Set version
         id: pkgversion
         run: |
-          echo '::set-output name=PKG_VERSION::$(jq -r ".version" "package.json")'
+          PKG_VERSION=$(jq -r ".version" "package.json")
+          echo '::set-output name=PKG_VERSION::$PKG_VERSION"
       - name: echo version
         run: |
           echo "version is ${{ steps.pkgversion.outputs.PKG_VERSION }}"
