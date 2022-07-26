@@ -13,6 +13,7 @@ jobs:
         id: pkgversion
         run: |
           PKG_VERSION=$(jq -r ".version" "package.json")
+          echo "$PKG_VERSION"
           echo '::set-output name=PKG_VERSION::$PKG_VERSION'
       - name: echo version
         run: |
@@ -27,3 +28,8 @@ jobs:
             type=raw,value=dev-{{date 'YYYYMMDD'}}-{{sha}}
             type=raw,value=dev-${{ steps.pkgversion.outputs.PKG_VERSION }}
 
+      - name: echo docker meta
+        id: echo-docker-meta
+        run: |
+          echo ${{ steps.pkgversion.outputs.PKG_VERSION }}
+          echo ${{ steps.meta.outputs.tags }}
