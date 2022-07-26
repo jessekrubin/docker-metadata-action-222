@@ -1,0 +1,19 @@
+{
+  "name": "docker-metadata-action-222",
+  "version": "0.1.0",
+  "description": "thingy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessekrubin/docker-metadata-action-222.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessekrubin/docker-metadata-action-222/issues"
+  },
+  "homepage": "https://github.com/jessekrubin/docker-metadata-action-222#readme"
+}

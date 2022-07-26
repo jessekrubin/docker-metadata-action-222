@@ -1,0 +1,28 @@
+name: DGCI
+
+on: [ push, pull_request ]
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set version
+        id: pkgversion
+        run: |
+          echo '::set-output name=PKG_VERSION::$(jq -r ".version" "package.json")'
+      - name: echo version
+        run: |
+          echo "version is ${{ steps.pkgversion.outputs.PKG_VERSION }}"
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: dynamicgraphics/predators2-dev
+          tags: |
+            type=raw,value=latest
+            type=raw,value=dev-{{date 'YYYYMMDD'}}-{{sha}}
+            type=raw,value=dev-${{ steps.pkgversion.outputs.PKG_VERSION }}
+
