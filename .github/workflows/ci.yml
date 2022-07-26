@@ -14,7 +14,7 @@ jobs:
         run: |
           PKG_VERSION=$(jq -r ".version" "package.json")
           echo "$PKG_VERSION"
-          echo '::set-output name=PKG_VERSION::$PKG_VERSION'
+          echo "::set-output name=PKG_VERSION::$PKG_VERSION"
       - name: echo version
         run: |
           echo "version is ${{ steps.pkgversion.outputs.PKG_VERSION }}"
@@ -22,7 +22,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: dynamicgraphics/predators2-dev
+          images: someimage
           tags: |
             type=raw,value=latest
             type=raw,value=dev-{{date 'YYYYMMDD'}}-{{sha}}
